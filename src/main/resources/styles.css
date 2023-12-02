@@ -1,0 +1,35 @@
+@font-face {
+    font-family: "Montserrat-Regular";
+    src: url('fonts/Montserrat-Regular.ttf');
+}
+
+/*
+    Ana renk = #3AB09E;
+    Arka plan rengi = #F0FAF9;
+*/
+
+#appBar{
+    -fx-background-color: #3AB09E;
+}
+
+#appBarTitle{
+    -fx-text-fill: #F0FAF9;
+    -fx-font-family: 'Montserrat-Regular';
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+}
+
+.action-btn{
+    -fx-background-color: #3AB09E;
+    -fx-padding: 8px;
+    -fx-border-width: 0px;
+    -fx-cursor: hand;
+}
+
+.icon{
+    -fx-fill: #F0FAF9;
+}
+
+.action-btn:hover .icon{
+    -fx-fill: #FFFFFF;
+}
