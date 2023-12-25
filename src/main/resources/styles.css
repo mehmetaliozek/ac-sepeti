@@ -1,35 +1,54 @@
+/*
+    Ana renk = #DC143C;
+    Arka plan rengi = #FDEDF1;
+*/
+
 @font-face {
     font-family: "Montserrat-Regular";
     src: url('fonts/Montserrat-Regular.ttf');
 }
 
-/*
-    Ana renk = #3AB09E;
-    Arka plan rengi = #F0FAF9;
-*/
-
+/* AppBar */
 #appBar{
-    -fx-background-color: #3AB09E;
+    -fx-background-color: #DC143C;
 }
 
 #appBarTitle{
-    -fx-text-fill: #F0FAF9;
+    -fx-text-fill: #FDEDF1;
     -fx-font-family: 'Montserrat-Regular';
     -fx-font-size: 24;
     -fx-font-weight: bold;
+    -fx-cursor: hand;
 }
 
-.action-btn{
-    -fx-background-color: #3AB09E;
+.action-btn , .restaurant-btn{
+    -fx-background-color: #DC143C;
     -fx-padding: 8px;
     -fx-border-width: 0px;
     -fx-cursor: hand;
 }
 
 .icon{
-    -fx-fill: #F0FAF9;
+    -fx-fill: #FDEDF1;
+}
+
+.action-btn:hover{
+    -fx-background-color: #FDEDF1;
 }
 
 .action-btn:hover .icon{
-    -fx-fill: #FFFFFF;
+    -fx-fill: #DC143C;
+}
+
+/* Restaurant */
+.restaurant{
+    -fx-background-color:#DC143C;
+    -fx-background-radius: 10;
+    /*-fx-border-color:#DC143C;*/
+    -fx-border-radius: 10;
+    /*-fx-border-width: 2px;*/
+}
+
+.restaurant:hover{
+    -fx-cursor: hand;
 }
