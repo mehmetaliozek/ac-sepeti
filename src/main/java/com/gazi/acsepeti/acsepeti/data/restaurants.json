@@ -1,0 +1,16 @@
+[
+  {
+    "id": 0,
+    "name": "",
+    "imgUrl": "",
+    "foods": [
+      {
+        "id": 0,
+        "name": "",
+        "description": "",
+        "imgUrl": "",
+        "price": 0
+      }
+    ]
+  }
+]
