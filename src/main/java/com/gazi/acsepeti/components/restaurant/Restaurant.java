@@ -1,6 +1,10 @@
-package com.gazi.acsepeti.acsepeti.components;
+package com.gazi.acsepeti.components.restaurant;
 
-import com.gazi.acsepeti.acsepeti.interfaces.IGeneralComponentsFunctions;
+import com.gazi.acsepeti.Main;
+import com.gazi.acsepeti.components.Body;
+import com.gazi.acsepeti.interfaces.IGeneralComponentsFunctions;
+import com.gazi.acsepeti.interfaces.IRestaurantFunctions;
+import com.gazi.acsepeti.models.RestaurantModel;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.event.EventHandler;
@@ -16,30 +20,31 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class Restaurant extends VBox implements IGeneralComponentsFunctions {
-    private final String name;
-    private final String imageUrl;
+import java.util.ArrayList;
+
+public class Restaurant extends VBox implements IGeneralComponentsFunctions, IRestaurantFunctions {
+    private RestaurantModel model;
     private final EventHandler<MouseEvent> mouseEventHandler;
 
-    public Restaurant(String name, String imageUrl) {
-        this.name = name;
-        this.imageUrl = imageUrl;
-        this.mouseEventHandler = e->{
+    public Restaurant(RestaurantModel model) {
+        this.model = model;
+        this.mouseEventHandler = e -> {
             // TODO: Yemek listesine geçiş sağla aşağıda örnek sistem var
-//            ArrayList restaurants = new ArrayList<Button>();
-//            restaurants.add(new Button());
-//            restaurants.add(new Button());
-//            Body body = new Body(restaurants,2);
-//            Main.vBox.getChildren().remove(Main.vBox.getChildren().size()-1);
-//            Main.vBox.getChildren().add(body);
+            ArrayList foods = new ArrayList<Food>();
+            for (int i = 0; i < model.foods.size(); i++) {
+                foods.add(new Food(model.foods.get(i)));
+            }
+            Body body = new Body(foods, 2);
+            Main.vBox.getChildren().remove(Main.vBox.getChildren().size() - 1);
+            Main.vBox.getChildren().add(body);
         };
         setImage();
         setAction();
-        thisSets();
+        setThis();
     }
 
     @Override
-    public void thisSets() {
+    public void setThis() {
         getStyleClass().add("restaurant");
         setPrefHeight(300);
         setPrefWidth(405);
@@ -51,9 +56,10 @@ public class Restaurant extends VBox implements IGeneralComponentsFunctions {
         setOnMouseClicked(mouseEventHandler);
     }
 
-    private void setImage() {
+    @Override
+    public void setImage() {
         // Resmi internetten çekiyoz
-        Image image = new Image(imageUrl);
+        Image image = new Image(model.imageUrl);
 
         // Resmi görüntüleyici bileşene aktarıyoz
         ImageView imageView = new ImageView(image);
@@ -74,11 +80,12 @@ public class Restaurant extends VBox implements IGeneralComponentsFunctions {
         getChildren().add(imageView);
     }
 
-    private void setAction() {
+    @Override
+    public void setAction() {
         StackPane pane = new StackPane();
         pane.setPadding(new Insets(15, 10, 0, 10));
 
-        Label lbl = new Label(name);
+        Label lbl = new Label(model.name);
         lbl.setId("appBarTitle");
 
         FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon.ARROW_RIGHT);

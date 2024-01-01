@@ -1,6 +1,6 @@
-package com.gazi.acsepeti.acsepeti.components;
+package com.gazi.acsepeti.components;
 
-import com.gazi.acsepeti.acsepeti.interfaces.IGeneralComponentsFunctions;
+import com.gazi.acsepeti.interfaces.IGeneralComponentsFunctions;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,11 +20,11 @@ public class Actions extends StackPane implements IGeneralComponentsFunctions {
         cart.setOnAction(cartEvent);
         user = createActionButton(FontAwesomeIcon.USER_CIRCLE);
         user.setOnAction(userEvent);
-        thisSets();
+        setThis();
     }
 
     @Override
-    public void thisSets() {
+    public void setThis() {
         setMaxWidth(90);
         getChildren().addAll(cart, user);
         setAlignment(cart, Pos.CENTER_LEFT);

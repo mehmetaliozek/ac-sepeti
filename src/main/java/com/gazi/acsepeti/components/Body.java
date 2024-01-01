@@ -1,6 +1,6 @@
-package com.gazi.acsepeti.acsepeti.components;
+package com.gazi.acsepeti.components;
 
-import com.gazi.acsepeti.acsepeti.interfaces.IGeneralComponentsFunctions;
+import com.gazi.acsepeti.interfaces.IGeneralComponentsFunctions;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
@@ -9,7 +9,7 @@ import javafx.scene.layout.GridPane;
 import java.util.ArrayList;
 
 public class Body extends ScrollPane implements IGeneralComponentsFunctions {
-    private final GridPane gridPane;
+    private GridPane gridPane;
     private final int maxHorizontalComponentCount;
     private int positionX = 0;
     private int positionY = 0;
@@ -17,13 +17,12 @@ public class Body extends ScrollPane implements IGeneralComponentsFunctions {
     public Body(ArrayList<Parent> components, int maxHorizontalComponentCount) {
         this.maxHorizontalComponentCount = maxHorizontalComponentCount;
         this.gridPane = new GridPane();
-
         addComponents(components);
-        thisSets();
+        setThis();
     }
 
     @Override
-    public void thisSets() {
+    public void setThis() {
         setContent(gridPane);
         gridPane.setStyle("-fx-background-color: #FDEDF1");
         gridPane.setPrefWidth(1250);
@@ -45,5 +44,9 @@ public class Body extends ScrollPane implements IGeneralComponentsFunctions {
                 positionY++;
             }
         });
+    }
+
+    public GridPane getGridPane() {
+        return gridPane;
     }
 }

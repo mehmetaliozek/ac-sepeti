@@ -25,8 +25,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'com.gazi.acsepeti.acsepeti'
-    mainClass = 'com.gazi.acsepeti.acsepeti.Main'
+    mainModule = 'com.gazi.acsepeti'
+    mainClass = 'com.gazi.acsepeti.Main'
 }
 
 javafx {
