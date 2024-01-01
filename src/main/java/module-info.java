@@ -3,6 +3,6 @@ module com.gazi.acsepeti.acsepeti {
     requires javafx.fxml;
     requires de.jensd.fx.glyphs.fontawesome;
 
-    opens com.gazi.acsepeti.acsepeti to javafx.fxml;
-    exports com.gazi.acsepeti.acsepeti;
+    opens com.gazi.acsepeti to javafx.fxml;
+    exports com.gazi.acsepeti;
 }

@@ -1,0 +1,431 @@
+[
+  {
+    "id": 1,
+    "name": "Etlikeyif",
+    "imgUrl": "https://ibb.co/pQYTm0G",
+    "foods": [
+      {
+        "id": 1,
+        "name": "Kuzu Kırmızı Etli Ekmek",
+        "description": "Özenle hazırlanan kuzu kırmızı etle zenginleştirilmiş ekmek lezzeti sizi bekliyor.",
+        "imgUrl": "https://i.pinimg.com/564x/ae/7d/ee/ae7dee47d5bb7d135acce2facc68b524.jpg",
+        "price": 54.90
+      },
+      {
+        "id": 2,
+        "name": "Tavuklu Baharatlı Wrap",
+        "description": "Baharatların eşsiz dansıyla lezzetlenen tavuklu wrap, hafif ve doyurucu bir seçenek.",
+        "imgUrl": "https://i.pinimg.com/564x/30/a4/ac/30a4acd818689771440a9a46669da4d7.jpg",
+        "price": 44.90
+      },
+      {
+        "id": 3,
+        "name": "Etli Pide Lezzeti",
+        "description": "Geleneksel lezzetlerimizden etli pide, özel malzemelerle hazırlanmış nefis bir seçenek.",
+        "imgUrl": "https://i.pinimg.com/564x/08/e6/17/08e6175cd34f2c18b9da28ead0dcfcde.jpg",
+        "price": 54.99
+      },
+      {
+        "id": 4,
+        "name": "Hasan Ustanın Köfte Tabağı",
+        "description": "Hasan Usta'nın maharetli ellerinden çıkan köftelerle şölene davetlisiniz.",
+        "imgUrl": "https://i.pinimg.com/564x/a5/f5/54/a5f554a8f39ce844ea214843ad627f56.jpg",
+        "price": 84.90
+      },
+      {
+        "id": 5,
+        "name": "Sebzeli Kaşarlı Ekmek",
+        "description": "Sebzelerin taze lezzeti ve kaşarın enfes dokusu ile harmanlanan ekmek lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/bc/fe/a2/bcfea21a878f8b28a5f967af08775839.jpg",
+        "price": 39.90
+      }
+    ]
+  },
+
+  {
+    "id": 2,
+    "name": "Lezzetli Dalga",
+    "imgUrl": "blob:https://huggingface.co/f06c7e60-d7ac-47bd-a232-65b272b7f905",
+    "foods": [
+      {
+        "id": 6,
+        "name": "Karides Kokteyli",
+        "description": "Denizden gelen enfes karideslerle hazırlanan kokteyl lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/d8/91/61/d891610fed126975e896d23237f18ca5.jpg",
+        "price": 119.99
+      },
+      {
+        "id": 7,
+        "name": "Balık Tava Harikası",
+        "description": "Özel baharatlarla marine edilmiş ve nefis soslarla sunulan balık tava lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/63/0d/37/630d37ef6eed8edfba3a40865d2db950.jpg",
+        "price": 85.99
+      },
+      {
+        "id": 8,
+        "name": "Midye Dolma Şöleni",
+        "description": "Denizden taze yakalanan midyelerle doldurulmuş enfes dolma lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/9d/d3/7d/9dd37d2626b801f99134bd70e8fe4da9.jpg",
+        "price": 45.99
+      },
+      {
+        "id": 9,
+        "name": "Yengeç Burger",
+        "description": "Özel soslarla marine edilmiş yengeç eti ile hazırlanan burger lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/74/44/12/744412a596c1581aefe1881022e80e07.jpg",
+        "price": 189.99
+      },
+      {
+        "id": 10,
+        "name": "Levrek Izgara",
+        "description": "Taze levrek balığı ızgara lezzeti ile sofranıza geliyor.",
+        "imgUrl": "https://i.pinimg.com/564x/35/5a/2d/355a2dcf62fec3b00d09b22ecdb71e64.jpg",
+        "price": 124.99
+      }
+    ]
+  },
+
+  {
+    "id": 3,
+    "name": "FastFM",
+    "imgUrl": "blob:https://huggingface.co/f16059d0-bd07-46b4-b076-801ab96592ba",
+    "foods": [
+      {
+        "id": 11,
+        "name": "Hamburger Delüks",
+        "description": "Premium malzemelerle hazırlanan, enfes soslarla tamamlanan hamburger lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/2d/d1/8f/2dd18f76089449c21ae799c6149b67aa.jpg",
+        "price": 199.99
+      },
+      {
+        "id": 12,
+        "name": "Patates Kızartması Keyfi",
+        "description": "Taze patateslerle hazırlanan çıtır kızartma keyfi.",
+        "imgUrl": "https://i.pinimg.com/564x/27/d0/25/27d025ba854b5088bf0a6eb297516f70.jpg",
+        "price": 47.99
+      },
+      {
+        "id": 13,
+        "name": "Mega Tost",
+        "description": "Büyük boyutta ve zengin içerikli mega tost lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/da/ea/6b/daea6b3e4c8b76f97222298834024fb6.jpg",
+        "price": 69.99
+      },
+      {
+        "id": 14,
+        "name": "Çıtır Tavuk Topları",
+        "description": "Özel baharatlarla marine edilmiş, çıtır tavuk topları lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/38/e5/75/38e5753a5c85421b4dd7ca3ccfc489fd.jpg",
+        "price": 75.99
+      },
+      {
+        "id": 15,
+        "name": "FastFM'in Special Soslu Makarnası",
+        "description": "Özel soslarla tatlandırılan makarna keyfi.",
+        "imgUrl": "https://i.pinimg.com/564x/22/a1/ef/22a1ef6ff8071868db646d9a895f2c43.jpg",
+        "price": 78.99
+      }
+    ]
+  },
+
+  {
+    "id": 4,
+    "name": "Enes'in Mutfağı",
+    "imgUrl": "blob:https://huggingface.co/05168310-2630-46c9-bdf5-8701dd927925",
+    "foods": [
+      {
+        "id": 16,
+        "name": "Ev Usulü Kuru Fasulye",
+        "description": "Geleneksel Türk mutfağının vazgeçilmezi ev usulü kuru fasulye lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/d7/73/6c/d7736cf5b0a6adec94ea190e5af8dd62.jpg",
+        "price": 55.99
+      },
+      {
+        "id": 17,
+        "name": "Taze Taze İç Pilav",
+        "description": "Taze malzemelerle hazırlanan, nefis iç pilav lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/7d/df/b5/7ddfb5610214bcd0d00f6b40252d0473.jpg",
+        "price": 38.99
+      },
+      {
+        "id": 18,
+        "name": "Karnabahar Beşamel",
+        "description": "Beşamel sos eşliğinde özel hazırlanan karnabahar lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/d3/b6/b4/d3b6b4b98f13d89154461eaa70c8a888.jpg",
+        "price": 49.99
+      },
+      {
+        "id": 19,
+        "name": "Yoğurtlu Kabak Kavurma",
+        "description": "Yoğurtlu sosla marine edilen, enfes kabak kavurma lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/e1/23/9d/e1239d49877089dc07455d6cdf4c10bc.jpg",
+        "price": 45.99
+      },
+      {
+        "id": 20,
+        "name": "Anadolu Kırmızı Mercimek Çorbası",
+        "description": "Anadolu'nun lezzetli kırmızı mercimek çorbasının eşsiz tadı.",
+        "imgUrl": "https://i.pinimg.com/564x/dd/7e/e6/dd7ee6b840ff8223a889efda9aa0ed61.jpg",
+        "price": 29.99
+      }
+    ]
+  },
+
+  {
+    "id": 5,
+    "name": "Tatlı Yiğit",
+    "imgUrl": "https://ibb.co/gJ554bQ",
+    "foods": [
+      {
+        "id": 21,
+        "name": "Antep Fıstıklı Baklava",
+        "description": "Antep fıstığı ile zenginleştirilmiş, şerbetiyle nefis bir baklava lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/6e/cb/92/6ecb9223e8e7fc3d2f6fa5ae260db89b.jpg",
+        "price": 85.99
+      },
+      {
+        "id": 22,
+        "name": "Cevizli Sarma",
+        "description": "Ceviz içi dolu, hafif ve lezzetli bir tatlı olan cevizli sarma.",
+        "imgUrl": "https://i.pinimg.com/564x/cb/62/d2/cb62d2dd12a948655ef626af12c07633.jpg",
+        "price": 75.99
+      },
+      {
+        "id": 23,
+        "name": "Kerhane Tatlısı",
+        "description": "Yumuşak dokulu, şeker şerbetiyle tatlandırılmış geleneksel bir tatlı lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/d9/54/51/d95451f9a48afb119545ad2e76ac3b24.jpg",
+        "price": 102.99
+      },
+      {
+        "id": 24,
+        "name": "Şöbiyet Çıtırı",
+        "description": "İnce hamurlu, ceviz içi ve şeker şerbeti ile lezzetlenmiş çıtır bir tatlı.",
+        "imgUrl": "https://i.pinimg.com/564x/21/3e/e6/213ee6931edc841c0708e8328ac6a335.jpg",
+        "price": 160.99
+      },
+      {
+        "id": 25,
+        "name": "Soğuk Baklava",
+        "description": "Yumuşak ve soğuk dokusuyla farklı bir baklava deneyimi.",
+        "imgUrl": "https://i.pinimg.com/564x/d5/5d/4d/d55d4db777401dcb2653cfbfdb4613d2.jpg",
+        "price": 170.99
+      }
+    ]
+  },
+
+  {
+    "id": 6,
+    "name": "Le'Asrın",
+    "imgUrl": "blob:https://huggingface.co/92a3e44b-5a6a-4810-8997-ea12c95a9abe",
+    "foods": [
+      {
+        "id": 26,
+        "name": "Ratatouille",
+        "description": "Sebzelerin enfes uyumuyla hazırlanan Ratatouille lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/ac/2b/87/ac2b8712745b5e5212d3a727b6fed95e.jpg",
+        "price": 90.99
+      },
+      {
+        "id": 27,
+        "name": "Tartare Au Boeuf",
+        "description": "Taze dana etiyle hazırlanan Tartare Au Boeuf lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/74/39/01/743901ce5590c54115a838799b75fa73.jpg",
+        "price": 230.99
+      },
+      {
+        "id": 28,
+        "name": "Les Huitres & Champagne",
+        "description": "Şampanya eşliğinde taze istiridye lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/36/9c/2e/369c2ea55e711faa94680e38c1ace17b.jpg",
+        "price": 416.99
+      },
+      {
+        "id": 29,
+        "name": "Coquille Saint-Jaques",
+        "description": "Denizde yakalanan Saint-Jaques midyeleriyle hazırlanan lezzet.",
+        "imgUrl": "https://i.pinimg.com/564x/b7/b1/0c/b7b10c66f2a9bbf1cbecc8bb588c098d.jpg",
+        "price": 614.99
+      },
+      {
+        "id": 30,
+        "name": "Châteaubriand",
+        "description": "Enfes Châteaubriand etiyle lezzet şöleni.",
+        "imgUrl": "https://i.pinimg.com/564x/84/c3/eb/84c3ebffc0f22009932c2e60bdffc034.jpg",
+        "price": 912.99
+      }
+    ]
+  },
+
+  {
+    "id": 7,
+    "name": "Şıpır Mıpır Serinlik",
+    "imgUrl": "blob:https://huggingface.co/25f60deb-9ed6-4c65-8702-3a0de6ac4371",
+    "foods": [
+      {
+        "id": 31,
+        "name": "Naneli Limonata",
+        "description": "Taze nane yaprakları ile lezzetlendirilmiş ferahlatıcı naneli limonata.",
+        "imgUrl": "https://tr.pinterest.com/pin/362610207470889922/",
+        "price": 65.99
+      },
+      {
+        "id": 32,
+        "name": "Ahududulu Buzlu Çay",
+        "description": "Taze ahududu ile hazırlanan buzlu çay lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/57/11/f8/5711f8a31b69eff1da5b15a1822f0181.jpg",
+        "price": 76.99
+      },
+      {
+        "id": 33,
+        "name": "Portakal Şurubu",
+        "description": "Doğal portakal aroması ile hazırlanan serinletici içecek.",
+        "imgUrl": "https://i.pinimg.com/564x/06/88/4e/06884ed65b6785a88192456b220775bb.jpg",
+        "price": 54.99
+      },
+      {
+        "id": 34,
+        "name": "Karışık Meyve Smoothie",
+        "description": "Çeşitli meyvelerin harmanlanmasıyla hazırlanan serinletici smoothie.",
+        "imgUrl": "https://i.pinimg.com/564x/93/19/99/931999459e4578d63d4131f82bb2ca76.jpg",
+        "price": 77.99
+      },
+      {
+        "id": 35,
+        "name": "Kavunlu Serin İçecek(Kavun Çavurma)",
+        "description": "Taze kavun ile hazırlanan ferahlatıcı içecek lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/03/d6/ba/03d6ba1cda23e9606a3518897da27287.jpg",
+        "price": 68.99
+      }
+    ]
+  },
+
+  {
+    "id": 8,
+    "name": "Bedo Döner",
+    "imgUrl": "https://ibb.co/wrZXbTz",
+    "foods": [
+      {
+        "id": 36,
+        "name": "Döner Tabağı",
+        "description": "Taze döner eti, pilav ve yanında garnitürlerle servis edilen lezzetli döner tabağı.",
+        "imgUrl": "https://i.pinimg.com/564x/1f/9c/73/1f9c739dc37c80ffb3cc68e8441c7f34.jpg",
+        "price": 124.99
+      },
+      {
+        "id": 37,
+        "name": "Gobit Et Döner",
+        "description": "Gobit ekmeğiyle hazırlanan, nefis soslarla lezzetlendirilmiş et döner.",
+        "imgUrl": "https://i.pinimg.com/564x/36/df/90/36df908b266dccd6bd27932d7b3f0b38.jpg",
+        "price": 89.99
+      },
+      {
+        "id": 38,
+        "name": "Şiş Kebap",
+        "description": "Taze şişe dizilmiş et parçaları, özel baharatlarla marine edilmiş şiş kebap lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/10/63/f6/1063f659167ea1655ea99905bdec9446.jpg",
+        "price": 79.99
+      },
+      {
+        "id": 39,
+        "name": "Tavuk Döner",
+        "description": "Tavuk etiyle hazırlanan, hafif ve lezzetli tavuk döner.",
+        "imgUrl": "https://i.pinimg.com/564x/23/3f/b1/233fb117a70f33a91daea0c6b0c7d0c8.jpg",
+        "price": 69.99
+      },
+      {
+        "id": 40,
+        "name": "İskender",
+        "description": "Yoğurtlu, tereyağlı ve salçalı sos eşliğinde sunulan geleneksel İskender lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/b9/52/8c/b9528c6801d38ad5a8a333166f302b4a.jpg",
+        "price": 149.99
+      }
+    ]
+  },
+
+  {
+    "id": 9,
+    "name": "Pizza Şöleni",
+    "imgUrl": "blob:https://huggingface.co/ec96cbfd-1987-44e8-b2c6-e8ccec24472d",
+    "foods": [
+      {
+        "id": 41,
+        "name": "Margherita Pizza",
+        "description": "Domates sosu, mozzarella peyniri ve taze fesleğen ile hazırlanan klasik Margherita pizza.",
+        "imgUrl": "https://i.pinimg.com/564x/a6/54/69/a65469f36d43f5cda918402eafdf2bc7.jpg",
+        "price": 179.99
+      },
+      {
+        "id": 42,
+        "name": "Prosciutto ve Rucola Pizza",
+        "description": "Prosciutto jambon, roka ve parmesan peyniri ile zenginleştirilmiş pizza lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/65/df/5b/65df5bc9a709cc9e8a96b1f6c5655cf6.jpg",
+        "price": 269.99
+      },
+      {
+        "id": 43,
+        "name": "Füme Somonlu Pizza",
+        "description": "Füme somon, taze soğan ve krema soslu enfes pizza lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/4f/98/58/4f9858390c4554245f1a3d37fc35e289.jpg",
+        "price": 219.99
+      },
+      {
+        "id": 44,
+        "name": "Mantarlı ve Sosisli Pizza",
+        "description": "Mantar, sosis ve mozarella peyniri ile zenginleştirilmiş pizza lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/a5/2e/3f/a52e3f3b925c2c1e8e9fe0c89daf5c0b.jpg",
+        "price": 199.99
+      },
+      {
+        "id": 45,
+        "name": "Quattro Formaggi Pizza",
+        "description": "Dört çeşit peynirle hazırlanan enfes Quattro Formaggi pizza.",
+        "imgUrl": "https://i.pinimg.com/564x/55/f4/ef/55f4efcb07eb1d00dcd21220eb6563d8.jpg",
+        "price": 289.99
+      }
+    ]
+  },
+
+  {
+    "id": 10,
+    "name": "Ciğerci Mali Usta",
+    "imgUrl": "https://ibb.co/XSz1yDH",
+    "foods": [
+      {
+        "id": 46,
+        "name": "Ciğer Tabağı",
+        "description": "Taze ciğerlerle hazırlanan lezzetli ciğer tabağı.",
+        "imgUrl": "https://i.pinimg.com/564x/c2/bf/9a/c2bf9a2ed3fa32bdc9bd022c8b1cf085.jpg",
+        "price": 124.99
+      },
+      {
+        "id": 47,
+        "name": "Ciğer Şiş",
+        "description": "Odun ateşinde pişirilen nefis ciğer şiş lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/89/23/67/8923678d127b862c1d0fa7841d10710b.jpg",
+        "price": 86.99
+      },
+      {
+        "id": 48,
+        "name": "Adana",
+        "description": "Baharatlarla harmanlanmış, yöresel Adana kebabı lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/3c/7b/62/3c7b62c42c0bc284cd116c79f75f1e0b.jpg",
+        "price": 96.99
+      },
+      {
+        "id": 49,
+        "name": "Kokoreç",
+        "description": "Taze kokoreç iç malzemesiyle hazırlanan lezzetli kokoreç.",
+        "imgUrl": "https://i.pinimg.com/564x/50/73/46/507346d834866e3cf71006d373172a68.jpg",
+        "price": 94.99
+      },
+      {
+        "id": 50,
+        "name": "Kelle Paça",
+        "description": "Geleneksel kelle paça çorbasının eşsiz lezzeti.",
+        "imgUrl": "https://i.pinimg.com/564x/18/23/1a/18231a24b77983f5d3f047ce94c8d6c2.jpg",
+        "price": 69.99
+      }
+    ]
+  }
+]

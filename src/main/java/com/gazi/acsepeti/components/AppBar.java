@@ -1,6 +1,6 @@
-package com.gazi.acsepeti.acsepeti.components;
+package com.gazi.acsepeti.components;
 
-import com.gazi.acsepeti.acsepeti.interfaces.IGeneralComponentsFunctions;
+import com.gazi.acsepeti.interfaces.IGeneralComponentsFunctions;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -22,11 +22,11 @@ public class AppBar extends StackPane implements IGeneralComponentsFunctions {
 
         actions = new Actions(cartEvent, userEvent);
 
-        thisSets();
+        setThis();
     }
 
     @Override
-    public void thisSets() {
+    public void setThis() {
         getChildren().addAll(titleLabel, actions);
         setId("appBar");
         setAlignment(titleLabel, Pos.CENTER_LEFT);
