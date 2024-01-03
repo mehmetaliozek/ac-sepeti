@@ -1,5 +1,17 @@
 package com.gazi.acsepeti;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Iterator;
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+
 import com.gazi.acsepeti.components.AppBar;
 import com.gazi.acsepeti.components.Body;
 import com.gazi.acsepeti.components.cart.Cart;
@@ -58,21 +70,34 @@ public class Main extends Application {
 
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws FileNotFoundException {
         //userModel = new UserModel(0, "Mehmet Ali", "Özek", "mehmetaliozek761@gmail.com", "123456", "", "");
         ArrayList restaurants = new ArrayList<Restaurant>();
 
+      JsonArray jsonArray = Json.createReader(new FileReader("src/main/java/com/gazi/acsepeti/data/restaurants.json")).readArray();
         //TODO: Aşağıdaki for döngüsününden önce json okuma işlemlerini ekliyip gelen data ile aşağıdaki for döngüsünü çalıştırın
-        for (int i = 0; i < 7; i++) {
+        //TODO: Mali türkçe karakter sorununu düzelt çünkü bu bir frontend
+        for (JsonObject restaurantO : jsonArray.getValuesAs(JsonObject.class)) {
             ArrayList<FoodModel> foodModelList = new ArrayList<>();
-            for (int j = 0; j < new Random().nextInt(2, 10); j++) {
-                FoodModel foodModel = new FoodModel(j, "Döner Tabağı", "Taze döner eti, pilav ve yanında garnitürlerle servis edilen lezzetli döner tabağı.", "https://i.pinimg.com/564x/1f/9c/73/1f9c739dc37c80ffb3cc68e8441c7f34.jpg", 124.99);
+            int id = restaurantO.getInt("id");
+            String name = restaurantO.getString("name");
+            String imgUrl = restaurantO.getString("imgUrl");
+
+            JsonArray foods = restaurantO.getJsonArray("foods");
+            for (JsonObject food : foods.getValuesAs(JsonObject.class)) {
+                int foodId = food.getInt("id");
+                String foodName = food.getString("name");
+                String description = food.getString("description");
+                String foodImgUrl = food.getString("imgUrl");
+                double price = food.getJsonNumber("price").doubleValue();
+                FoodModel foodModel = new FoodModel(foodId, foodName, description, foodImgUrl, price);
                 foodModelList.add(foodModel);
             }
-            RestaurantModel restaurantModel = new RestaurantModel(0, "Etlekmekçi Hans Usta", "https://cdn.yemek.com/mnresize/1250/833/uploads/2021/09/yemeksepeti-lahmacun-yemekcom.jpg", foodModelList);
+            RestaurantModel restaurantModel = new RestaurantModel(id, name, imgUrl, foodModelList);
             Restaurant restaurant = new Restaurant(restaurantModel);
             restaurants.add(restaurant);
         }
+
 
         // Uygulamanın sayfalarının oluşturulması nesnesinin oluşturulması
         Body body = new Body(restaurants, maxHorizontalRestaurantCount);

@@ -3,11 +3,25 @@ package com.gazi.acsepeti.components.profile;
 import com.gazi.acsepeti.Main;
 import com.gazi.acsepeti.interfaces.IGeneralComponentsFunctions;
 import com.gazi.acsepeti.interfaces.ISignFunctions;
+import com.gazi.acsepeti.models.CartItemModel;
 import com.gazi.acsepeti.models.UserModel;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+
+import javax.json.*;
+import javax.json.stream.JsonGenerator;
+import javax.json.stream.JsonParsingException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.StringReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUp extends VBox implements IGeneralComponentsFunctions, ISignFunctions {
     private UserModel userModel;
@@ -88,11 +102,70 @@ public class SignUp extends VBox implements IGeneralComponentsFunctions, ISignFu
                 }
             });
             //TODO:Kullanıcıyı kaydedin
+            saveUser(userModel);
             Main.userModel = userModel;
+
             Main.getProfile();
         });
         getChildren().add(button);
     }
+
+    private void saveUser(UserModel userModel) {
+        // Önce mevcut kullanıcıları dosyadan oku
+        JsonArray existingUsers = readJsonArrayFromFile("src/main/java/com/gazi/acsepeti/data/users.json");
+
+        JsonArrayBuilder builder = Json.createArrayBuilder();
+
+        for (JsonValue value : existingUsers) {
+            builder.add(value);
+        }
+        // Yeni kullanıcıyı JSON dizisine ekleyelim
+        JsonObject newUser = createJsonObject(userModel);
+        builder.add(newUser);
+
+        // Güncellenmiş JSON dizisini dosyaya yazalım
+        writeJsonArrayToFile(builder.build(), "src/main/java/com/gazi/acsepeti/data/users.json");
+    }
+
+    private JsonArray readJsonArrayFromFile(String filePath) {
+        try (JsonReader reader = Json.createReader(new FileReader(filePath))) {
+            // Dosyadan JSON dizisini okuma işlemi
+            return reader.readArray();
+        } catch (IOException e) {
+            // Hata durumunda yeni bir boş JSON dizisi oluştur
+            return Json.createArrayBuilder().build();
+        }
+    }
+
+    private void writeJsonArrayToFile(JsonArray jsonArray, String filePath) {
+        try (JsonWriter writer = Json.createWriter(new FileWriter(filePath))) {
+            // JSON dizisini dosyaya yazma işlemi
+            writer.writeArray(jsonArray);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private JsonObject createJsonObject(UserModel userModel) {
+        JsonArrayBuilder cartArrayBuilder = Json.createArrayBuilder();
+
+        for (CartItemModel item : userModel.cart) {
+            cartArrayBuilder.add((JsonValue) item);
+        }
+
+        JsonArray cartArray = cartArrayBuilder.build();
+        return Json.createObjectBuilder()
+                .add("id",userModel.id)
+                .add("name", userModel.name)
+                .add("surname", userModel.surname)
+                .add("mail", userModel.mail)
+                .add("password", userModel.password)
+                .add("address",userModel.address)
+                .add("tel",userModel.tel)
+                .add("cart",cartArray )
+                .build();
+    }
+
 
     @Override
     public void switchSign() {

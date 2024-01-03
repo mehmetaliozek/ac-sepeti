@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class UserModel {
     public int id;
+
     public String name;
     public String surname;
     public String mail;

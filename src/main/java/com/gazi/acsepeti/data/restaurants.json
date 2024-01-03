@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Etlikeyif",
-    "imgUrl": "https://ibb.co/pQYTm0G",
+    "imgUrl": "https://i.ibb.co/VxfGKjr/indir-4.png",
     "foods": [
       {
         "id": 1,
@@ -40,12 +40,12 @@
         "price": 39.90
       }
     ]
-  },
-
+  }
+,
   {
     "id": 2,
     "name": "Lezzetli Dalga",
-    "imgUrl": "blob:https://huggingface.co/f06c7e60-d7ac-47bd-a232-65b272b7f905",
+    "imgUrl": "https://i.ibb.co/3WPQ62D/indir-5.png",
     "foods": [
       {
         "id": 6,
@@ -88,7 +88,7 @@
   {
     "id": 3,
     "name": "FastFM",
-    "imgUrl": "blob:https://huggingface.co/f16059d0-bd07-46b4-b076-801ab96592ba",
+    "imgUrl": "https://i.ibb.co/mC7qwKK/indir-4.png",
     "foods": [
       {
         "id": 11,
@@ -131,7 +131,7 @@
   {
     "id": 4,
     "name": "Enes'in Mutfağı",
-    "imgUrl": "blob:https://huggingface.co/05168310-2630-46c9-bdf5-8701dd927925",
+    "imgUrl": "https://i.ibb.co/8mHvqfd/indir-3.png",
     "foods": [
       {
         "id": 16,
@@ -174,7 +174,7 @@
   {
     "id": 5,
     "name": "Tatlı Yiğit",
-    "imgUrl": "https://ibb.co/gJ554bQ",
+    "imgUrl": "https://i.ibb.co/0rggsp1/indir-3.png",
     "foods": [
       {
         "id": 21,
@@ -217,7 +217,7 @@
   {
     "id": 6,
     "name": "Le'Asrın",
-    "imgUrl": "blob:https://huggingface.co/92a3e44b-5a6a-4810-8997-ea12c95a9abe",
+    "imgUrl": "https://i.ibb.co/CsQbbwF/indir-2.png",
     "foods": [
       {
         "id": 26,
@@ -260,7 +260,7 @@
   {
     "id": 7,
     "name": "Şıpır Mıpır Serinlik",
-    "imgUrl": "blob:https://huggingface.co/25f60deb-9ed6-4c65-8702-3a0de6ac4371",
+    "imgUrl": "https://i.ibb.co/RN7wkdk/resim-2023-12-31-195534850.png",
     "foods": [
       {
         "id": 31,
@@ -303,7 +303,7 @@
   {
     "id": 8,
     "name": "Bedo Döner",
-    "imgUrl": "https://ibb.co/wrZXbTz",
+    "imgUrl": "https://i.ibb.co/WpNwdQ2/indir.png",
     "foods": [
       {
         "id": 36,
@@ -346,7 +346,7 @@
   {
     "id": 9,
     "name": "Pizza Şöleni",
-    "imgUrl": "blob:https://huggingface.co/ec96cbfd-1987-44e8-b2c6-e8ccec24472d",
+    "imgUrl": "https://i.ibb.co/1M6kMMN/indir.png",
     "foods": [
       {
         "id": 41,
@@ -389,7 +389,7 @@
   {
     "id": 10,
     "name": "Ciğerci Mali Usta",
-    "imgUrl": "https://ibb.co/XSz1yDH",
+    "imgUrl": "https://i.ibb.co/hDKbXc0/indir-1.png",
     "foods": [
       {
         "id": 46,

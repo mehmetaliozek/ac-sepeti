@@ -9,6 +9,7 @@ plugins {
 group 'com.gazi.acsepeti'
 version '1.0-SNAPSHOT'
 
+
 repositories {
     mavenCentral()
 }
@@ -38,6 +39,11 @@ dependencies {
     implementation "de.jensd:fontawesomefx-fontawesome:4.7.0-9.1.2"
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    implementation "org.glassfish:javax.json:1.1.4"
+    implementation 'javax.json:javax.json-api:1.1.4'
+
+
+
 }
 
 test {
