@@ -23,19 +23,27 @@ public class UserModel {
         this.tel = tel;
         this.cart = new ArrayList<CartItemModel>();
     }
+    public UserModel(int id, String name, String surname, String mail, String password, String address, String tel,ArrayList<CartItemModel> cart) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.mail = mail;
+        this.password = password;
+        this.address = address;
+        this.tel = tel;
+        this.cart = cart;
+    }
 
     public void addToCart(CartItemModel item) {
-        //Cart boş ise
-        if (cart.isEmpty()) {
-            cart.add(item);
-            return;
-        }
-
         //Cart dolu ve var olan bi ürünün sayısı artıyor ise
-        if (changeAmountCartItem(item, 1)) return;
+        if (cart.contains(item)) {
+            if (changeAmountCartItem(item, 1)) return;
+        }
 
         //Cart dolu ve yeni ürün ekleniyor ise
         cart.add(item);
+
+        System.out.println(cart.size());
     }
 
     public boolean changeAmountCartItem(CartItemModel item, int amount) {

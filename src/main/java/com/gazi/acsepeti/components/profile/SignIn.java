@@ -1,5 +1,6 @@
 package com.gazi.acsepeti.components.profile;
 
+import com.gazi.acsepeti.JsonHelper;
 import com.gazi.acsepeti.Main;
 import com.gazi.acsepeti.interfaces.IGeneralComponentsFunctions;
 import com.gazi.acsepeti.interfaces.ISignFunctions;
@@ -10,12 +11,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
-import java.io.FileReader;
 import java.io.IOException;
+
 
 public class SignIn extends VBox implements IGeneralComponentsFunctions, ISignFunctions {
     private UserModel userModel;
@@ -90,52 +87,28 @@ public class SignIn extends VBox implements IGeneralComponentsFunctions, ISignFu
             });
 
             // TODO: Kullanıcının varlığını kontrol et
-            boolean userExists = checkUserExistence(userModel.mail, userModel.password);
+            boolean userExists = false;
+            try {
+                userExists = Main.helper.checkUserExistence(userModel.mail, userModel.password);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
             if (userExists) {
                 System.out.println("Giriş yapıldı");
                 Main.getProfile();
             } else {
                 System.out.println("Kullanıcı bulunamadı");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("EMAİ VEYA ŞİFRE YANLIŞ");
+                alert.show();
                 // Handle the case when the user does not exist
             }
         });
         getChildren().add(button);
     }
 
-    private boolean checkUserExistence(String email, String password) {
-        try (JsonReader reader = Json.createReader(new FileReader("src/main/java/com/gazi/acsepeti/data/users.json"))) {
-            JsonArray usersArray = reader.readArray();
-            System.out.println(usersArray);
-            for (JsonObject userObject : usersArray.getValuesAs(JsonObject.class)) {
 
-                String storedEmail = userObject.getString("mail");
-                System.out.println(storedEmail);
-                String storedPassword = userObject.getString("password");
-                if (email.equals(storedEmail) && password.equals(storedPassword)) {
-                    Main.userModel = convertJsonObjectToUserModel(userObject);
-                    System.out.println(Main.userModel.name);
-                    return true;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Handle the exception
-        }
-        return false;
-    }
-    private UserModel convertJsonObjectToUserModel(JsonObject userObject) {
-        // Extract user information from the JsonObject and create a UserModel
-        int id = userObject.getInt("id");
-        String name = userObject.getString("name");
-        String surname = userObject.getString("surname");
-        String email = userObject.getString("mail");
-        String password = userObject.getString("password");
-        String address = userObject.getString("address");
-        String tel = userObject.getString("tel");
-
-        return new UserModel(id, name, surname, email, password, address, tel);
-    }
 
     @Override
     public void switchSign() {

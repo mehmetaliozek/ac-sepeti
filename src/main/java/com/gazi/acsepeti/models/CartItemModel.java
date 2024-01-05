@@ -8,4 +8,8 @@ public class CartItemModel {
         this.food = food;
         this.count = 1;
     }
+    public CartItemModel(FoodModel food,int count) {
+        this.food = food;
+        this.count = count;
+    }
 }

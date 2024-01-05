@@ -1,15 +1,6 @@
 package com.gazi.acsepeti;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Iterator;
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
-import java.io.FileReader;
-import java.io.IOException;
 
 
 import com.gazi.acsepeti.components.AppBar;
@@ -18,8 +9,6 @@ import com.gazi.acsepeti.components.cart.Cart;
 import com.gazi.acsepeti.components.cart.CartItem;
 import com.gazi.acsepeti.components.profile.Sign;
 import com.gazi.acsepeti.components.restaurant.Restaurant;
-import com.gazi.acsepeti.models.FoodModel;
-import com.gazi.acsepeti.models.RestaurantModel;
 import com.gazi.acsepeti.models.UserModel;
 import javafx.application.Application;
 import javafx.scene.Node;
@@ -27,17 +16,16 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Main extends Application {
-
+    public static JsonHelper helper = new JsonHelper();
     public static boolean sign = false;
     public static UserModel userModel;
     public static VBox vBox;
     private final int maxHorizontalRestaurantCount = 3;
     private final int maxHorizontalFoodCount = 2;
-
 
     private static void setBody(Node node) {
         vBox.getChildren().remove(vBox.getChildren().size() - 1);
@@ -70,34 +58,11 @@ public class Main extends Application {
 
 
     @Override
-    public void start(Stage primaryStage) throws FileNotFoundException {
+    public void start(Stage primaryStage) throws IOException {
         //userModel = new UserModel(0, "Mehmet Ali", "Özek", "mehmetaliozek761@gmail.com", "123456", "", "");
         ArrayList restaurants = new ArrayList<Restaurant>();
 
-      JsonArray jsonArray = Json.createReader(new FileReader("src/main/java/com/gazi/acsepeti/data/restaurants.json")).readArray();
-        //TODO: Aşağıdaki for döngüsününden önce json okuma işlemlerini ekliyip gelen data ile aşağıdaki for döngüsünü çalıştırın
-        //TODO: Mali türkçe karakter sorununu düzelt çünkü bu bir frontend
-        for (JsonObject restaurantO : jsonArray.getValuesAs(JsonObject.class)) {
-            ArrayList<FoodModel> foodModelList = new ArrayList<>();
-            int id = restaurantO.getInt("id");
-            String name = restaurantO.getString("name");
-            String imgUrl = restaurantO.getString("imgUrl");
-
-            JsonArray foods = restaurantO.getJsonArray("foods");
-            for (JsonObject food : foods.getValuesAs(JsonObject.class)) {
-                int foodId = food.getInt("id");
-                String foodName = food.getString("name");
-                String description = food.getString("description");
-                String foodImgUrl = food.getString("imgUrl");
-                double price = food.getJsonNumber("price").doubleValue();
-                FoodModel foodModel = new FoodModel(foodId, foodName, description, foodImgUrl, price);
-                foodModelList.add(foodModel);
-            }
-            RestaurantModel restaurantModel = new RestaurantModel(id, name, imgUrl, foodModelList);
-            Restaurant restaurant = new Restaurant(restaurantModel);
-            restaurants.add(restaurant);
-        }
-
+        helper.readDataFromRestaurants(restaurants);
 
         // Uygulamanın sayfalarının oluşturulması nesnesinin oluşturulması
         Body body = new Body(restaurants, maxHorizontalRestaurantCount);
@@ -132,4 +97,11 @@ public class Main extends Application {
         launch(args);
     }
 
+    @Override
+    public void stop() throws Exception {
+        helper.updateUser(userModel);
+        System.out.println("kapandı");
+        System.out.println(userModel.cart.size());
+    }
 }
+//TODO:kapanırken sepeti kaydet

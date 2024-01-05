@@ -1,5 +1,6 @@
 package com.gazi.acsepeti.components.profile;
 
+import com.gazi.acsepeti.JsonHelper;
 import com.gazi.acsepeti.Main;
 import com.gazi.acsepeti.interfaces.IGeneralComponentsFunctions;
 import com.gazi.acsepeti.interfaces.ISignFunctions;
@@ -52,6 +53,9 @@ public class Profile extends VBox implements IGeneralComponentsFunctions, ISignF
         String[] prompTexts = new String[]{
                 "Ad", "Soyad", "Email", "Şifre", "Adres", "Telefon"
         };
+        String[] currentUserInfo = new String[]{
+                Main.userModel.name, Main.userModel.surname, Main.userModel.mail, Main.userModel.password, Main.userModel.address, Main.userModel.tel
+        };
 
         for (int i = 0; i < prompTexts.length; i++) {
             if (i == 3) {
@@ -60,7 +64,11 @@ public class Profile extends VBox implements IGeneralComponentsFunctions, ISignF
                 passwordField.setMaxWidth(400);
                 passwordField.setPrefHeight(50);
                 passwordField.setMaxHeight(200);
-                passwordField.setPromptText(prompTexts[i]);
+                if (currentUserInfo[i] == null) {
+                    passwordField.setText(prompTexts[i]);
+                } else {
+                    passwordField.setText(currentUserInfo[i]);
+                }
                 getChildren().add(passwordField);
                 continue;
             }
@@ -69,7 +77,12 @@ public class Profile extends VBox implements IGeneralComponentsFunctions, ISignF
             textField.setMaxWidth(400);
             textField.setPrefHeight(50);
             textField.setMaxHeight(200);
-            textField.setPromptText(prompTexts[i]);
+            System.out.println(currentUserInfo[i]);
+            if (currentUserInfo[i] == " ") {
+                textField.setText(prompTexts[i]);
+            } else {
+                textField.setText(currentUserInfo[i]);
+            }
             getChildren().add(textField);
         }
     }
@@ -105,81 +118,11 @@ public class Profile extends VBox implements IGeneralComponentsFunctions, ISignF
                 }
             });
             //TODO:Kullanıcıyı güncelleyin
-            updateUser(userModel);
-            //Main.userModel = userModel;
+            Main.helper.updateUser(userModel);
+            Main.userModel = userModel;
             Main.getProfile();
         });
         getChildren().add(button);
-    }
-    private void updateUser(UserModel userModel) {
-        // Önce mevcut kullanıcıları dosyadan oku
-        JsonArray existingUsers = readJsonArrayFromFile("src/main/java/com/gazi/acsepeti/data/users.json");
-
-        JsonArrayBuilder builder = Json.createArrayBuilder();
-
-        for (JsonValue value : existingUsers) {
-            if (value instanceof JsonObject) {
-                JsonObject userObject = (JsonObject) value;
-                String existingUserName = userObject.getString("name");
-                System.out.println(existingUserName);
-
-                // Eğer kullanıcının adı Main.userModel.name ile eşleşiyorsa, bilgileri güncelle
-                System.out.println(Main.userModel.name);
-                if (existingUserName.toString()==userModel.name.toString()) {
-                    System.out.println("aaaaaaaaaaaaaaaaaaaaa");
-                    JsonObject updatedUser = createJsonObject(userModel);
-                    builder.add(updatedUser);
-                } else {
-                    builder.add(userObject);
-                }
-            } else {
-                // Eğer değer bir JsonObject değilse, olduğu gibi ekleyin
-                builder.add(value);
-            }
-        }
-
-        // Güncellenmiş JSON dizisini dosyaya yazalım
-        writeJsonArrayToFile(builder.build(), "src/main/java/com/gazi/acsepeti/data/users.json");
-    }
-
-
-    private JsonArray readJsonArrayFromFile(String filePath) {
-        try (JsonReader reader = Json.createReader(new FileReader(filePath))) {
-            // Dosyadan JSON dizisini okuma işlemi
-            return reader.readArray();
-        } catch (IOException e) {
-            // Hata durumunda yeni bir boş JSON dizisi oluştur
-            return Json.createArrayBuilder().build();
-        }
-    }
-
-    private void writeJsonArrayToFile(JsonArray jsonArray, String filePath) {
-        try (JsonWriter writer = Json.createWriter(new FileWriter(filePath))) {
-            // JSON dizisini dosyaya yazma işlemi
-            writer.writeArray(jsonArray);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private JsonObject createJsonObject(UserModel userModel) {
-        JsonArrayBuilder cartArrayBuilder = Json.createArrayBuilder();
-
-        for (CartItemModel item : userModel.cart) {
-            cartArrayBuilder.add((JsonValue) item);
-        }
-
-        JsonArray cartArray = cartArrayBuilder.build();
-        return Json.createObjectBuilder()
-                .add("id",userModel.id)
-                .add("name", userModel.name)
-                .add("surname", userModel.surname)
-                .add("mail", userModel.mail)
-                .add("password", userModel.password)
-                .add("address",userModel.address)
-                .add("tel",userModel.tel)
-                .add("cart",cartArray )
-                .build();
     }
 
     @Override

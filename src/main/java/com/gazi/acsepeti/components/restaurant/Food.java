@@ -9,6 +9,7 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -93,9 +94,15 @@ public class Food extends HBox implements IGeneralComponentsFunctions, IRestaura
             CartItemModel item = new CartItemModel(model);
             try {
                 Main.userModel.addToCart(item);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("ÜRÜN SEPETE EKLENMİŞTİR");
+                alert.show();
+                System.out.println(Main.userModel.cart.size());
             }
             catch (Exception e){
-
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("SEPETE ÜRÜN EKLEYEBİLMEK İÇİN GİRİŞ YAP VEYA KAYIT OL");
+                alert.show();
             }
         });
 
