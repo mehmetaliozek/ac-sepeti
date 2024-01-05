@@ -2,6 +2,12 @@ package com.gazi.acsepeti.models;
 
 import java.util.ArrayList;
 
+/**
+ * @param id restoranýn idsinin tutuldu deðiþken
+ * @param name restoranýn adýnýn tutuldu deðiþken
+ * @param imageUrl restoranýn resminin tutuldu deðiþken
+ * @param foods restoranýn satýþ yaptýðý yemeklerin tutuldu deðiþken
+ */
 public class RestaurantModel {
     public int id;
     public String name;

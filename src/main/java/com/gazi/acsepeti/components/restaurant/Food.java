@@ -17,12 +17,21 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+/**@see Food sınıfı
+ * @see HBox sınıfından kalıttık çünkü eklediğimiz componentlar otomatik bir şekilde yan yana diziliyor
+ * @see IGeneralComponentsFunctions interface inden implement ettik
+ * @see IRestaurantFunctions interface inden implement ettik
+ */
 public class Food extends HBox implements IGeneralComponentsFunctions, IRestaurantFunctions {
     private FoodModel model;
 
+    /**
+     * @param model yemeğin bilgilerini içinde barındıra sınıf
+     */
     public Food(FoodModel model) {
         this.model = model;
 
@@ -31,6 +40,7 @@ public class Food extends HBox implements IGeneralComponentsFunctions, IRestaura
         setThis();
     }
 
+    // Kendini ayarlama
     @Override
     public void setThis() {
         getStyleClass().add("food");
@@ -43,6 +53,7 @@ public class Food extends HBox implements IGeneralComponentsFunctions, IRestaura
         setOnMouseExited(event -> setEffect(new DropShadow(5, 0, 0, Color.GRAY)));
     }
 
+    // İçeriğindeki resmin ayarlanması
     @Override
     public void setImage() {
         // Resmi internetten çekiyoz
@@ -70,23 +81,29 @@ public class Food extends HBox implements IGeneralComponentsFunctions, IRestaura
 
     @Override
     public void setAction() {
+        /**@param pane bu bileşen içinde yemek bilgileri ve sepete ekleme butonunu tutacak*/
         StackPane pane = new StackPane();
         pane.setPadding(new Insets(10));
 
+        /**@param titleLabel yemeğin adını gösterdiğimiz bileşen*/
         Label titleLabel = new Label(model.name);
         titleLabel.setId("appBarTitle");
 
+        /**@param descriptionLabel yemeğin açıklaması gösterdiğimiz bileşen*/
         Label descriptionLabel = new Label(model.description);
         descriptionLabel.setId("foodDesciption");
         descriptionLabel.setWrapText(true);
 
+        /**@param priceLabel yemeğin fiyatını gösterdiğimiz bileşen*/
         Label priceLabel = new Label(Double.toString(model.price));
         priceLabel.setId("foodPrice");
 
+        /**@param icon butonun üzerinde gözükecek */
         FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon.PLUS_SQUARE);
         icon.setSize("35");
         icon.getStyleClass().add("icon");
 
+        /**@param button tıklandığında yemek sepete eklencek*/
         Button button = new Button();
         button.setGraphic(icon);
         button.getStyleClass().add("restaurant-btn");
@@ -97,7 +114,6 @@ public class Food extends HBox implements IGeneralComponentsFunctions, IRestaura
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("ÜRÜN SEPETE EKLENMİŞTİR");
                 alert.show();
-                System.out.println(Main.userModel.cart.size());
             }
             catch (Exception e){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -106,12 +122,14 @@ public class Food extends HBox implements IGeneralComponentsFunctions, IRestaura
             }
         });
 
+        // StackPane'e bileşenleri ekleme ve konumlarını ayarlama
         pane.getChildren().addAll(titleLabel, descriptionLabel, priceLabel, button);
         StackPane.setAlignment(titleLabel, Pos.TOP_LEFT);
         StackPane.setAlignment(descriptionLabel, Pos.CENTER_LEFT);
         StackPane.setAlignment(priceLabel, Pos.BOTTOM_LEFT);
         StackPane.setAlignment(button, Pos.BOTTOM_RIGHT);
 
+        // StackPane'i Food bileşenimize ekleme
         getChildren().add(pane);
     }
 }

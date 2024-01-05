@@ -9,12 +9,21 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 
+/**@see Actions sınıfı
+ * @see StackPane sınıfından kalıttık çünkü StackPane sınıfı içinedeki componentları sağa, sola, yukarı,
+ * aşağı, merkeze vb yerleştirmemizi sağlıyor
+ * @see IGeneralComponentsFunctions interface inden implement ettik
+ */
 public class Actions extends StackPane implements IGeneralComponentsFunctions {
-    // Kullanıcının sepetine erişmesini sağlamak içiin oluşturulmuş bir butondur
     private final Button cart;
-    // Kullanıcının bilgilerine erişmesi için oluşturulmuş bir butondur
     private final Button user;
 
+    /**
+     * @param cart Kullanıcının sepetine erişmesini sağlamak içiin oluşturulmuş bir butondur
+     * @param user Kullanıcının bilgilerine erişmesi için oluşturulmuş bir butondur
+     * @param cartEvent Actionsın sepet butonuna tıklancağında gerçekleşcek olaydır
+     * @param userEvent Actionsın kullanıcı butonuna tıklancağında gerçekleşcek olaydır
+     */
     public Actions(EventHandler<ActionEvent> cartEvent,EventHandler<ActionEvent> userEvent) {
         cart = createActionButton(FontAwesomeIcon.SHOPPING_CART);
         cart.setOnAction(cartEvent);
@@ -23,6 +32,7 @@ public class Actions extends StackPane implements IGeneralComponentsFunctions {
         setThis();
     }
 
+    // Kendini ayarlama
     @Override
     public void setThis() {
         setMaxWidth(90);

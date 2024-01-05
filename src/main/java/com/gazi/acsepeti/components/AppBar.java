@@ -9,12 +9,24 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
+/**@see AppBar sınıfı
+ * @see StackPane sınıfından kalıttık çünkü StackPane sınıfı içinedeki componentları sağa, sola, yukarı,
+ * aşağı, merkeze vb yerleştirmemizi sağlıyor böylece uygulama başlığı bi kenarda dururken diğer tarafta
+ * etkileşime geçceğimiz butonlar yer alıyor
+ * @see IGeneralComponentsFunctions interface inden implement ettik
+ */
 public class AppBar extends StackPane implements IGeneralComponentsFunctions {
-    // Appbarın başlığını tanımlar uygulamanın adını yazmak için kullanırız
     private final Label titleLabel;
     // Sepete ve kullanıcı hesap ayarlarına geçiş için butonları içinde barındırır
     private final Actions actions;
 
+    /**
+     * @param title Appbarın başlığını tanımlar uygulamanın adını yazmak için kullanırız
+     * @param actions sepet ve kullanıcı hesap sayfasına geçişleri içinde barındıran component
+     * @param labelEvent Appbarın başlığına tıklancağında gerçekleşcek olaydır
+     * @param cartEvent actionsın sepet butonuna tıklancağında gerçekleşcek olaydır
+     * @param userEvent actionsın kullanıcı butonuna tıklancağında gerçekleşcek olaydır
+     */
     public AppBar(String title, EventHandler<MouseEvent> labelEvent, EventHandler<ActionEvent> cartEvent, EventHandler<ActionEvent> userEvent) {
         titleLabel = new Label(title);
         titleLabel.setId("appBarTitle");
@@ -25,6 +37,7 @@ public class AppBar extends StackPane implements IGeneralComponentsFunctions {
         setThis();
     }
 
+    // Kendini ayarlama
     @Override
     public void setThis() {
         getChildren().addAll(titleLabel, actions);

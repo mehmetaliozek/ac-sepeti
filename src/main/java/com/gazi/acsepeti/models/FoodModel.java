@@ -2,6 +2,13 @@ package com.gazi.acsepeti.models;
 
 import java.util.Objects;
 
+/**
+ * @param id yemeðin idsinin tutuldu deðiþken
+ * @param name yemeðin adýnýn tutuldu deðiþken
+ * @param description yemeðin açýklamasýnýn tutuldu deðiþken
+ * @param imageUrl yemeðin resminin tutuldu deðiþken
+ * @param price yemeðin fiyatýnýn tutuldu deðiþken
+ */
 public class FoodModel {
     public int id;
     public String name;

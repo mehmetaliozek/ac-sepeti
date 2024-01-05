@@ -29,7 +29,6 @@ public class JsonHelper {
             for (JsonObject food : foods.getValuesAs(JsonObject.class)) {
                 int foodId = food.getInt("id");
                 String foodName = food.getString("name");
-                System.out.println(foodName);
                 String description = food.getString("description");
                 String foodImgUrl = food.getString("imgUrl");
                 double price = food.getJsonNumber("price").doubleValue();
@@ -46,7 +45,6 @@ public class JsonHelper {
         JsonArray existingUsers = readJsonArrayFromFile("src/main/java/com/gazi/acsepeti/data/users.json");
 
         if (isEmailAlreadyExists(existingUsers, userModel.mail)) {
-            System.out.println("Mail adresi zaten kayıtlı!");
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setContentText("MAİL ADRESİ ZATEN KAYITLI");
             alert.show();
@@ -98,7 +96,6 @@ public class JsonHelper {
     }
 
     public JsonObject createJsonObject(UserModel userModel) {
-        System.out.println(userModel.cart.size());
         JsonArrayBuilder cartArrayBuilder = Json.createArrayBuilder();
 
         for (CartItemModel item : userModel.cart) {
@@ -129,14 +126,11 @@ public class JsonHelper {
     public boolean checkUserExistence(String email, String password) throws IOException {
         JsonArray usersArray = Json.createReader(new FileReader("src/main/java/com/gazi/acsepeti/data/users.json", StandardCharsets.UTF_8)).readArray();
 
-        System.out.println(usersArray);
         for (JsonObject userObject : usersArray.getValuesAs(JsonObject.class)) {
             String storedEmail = userObject.getString("mail");
             String storedPassword = userObject.getString("password");
             if (email.equals(storedEmail) && password.equals(storedPassword)) {
                 Main.userModel = convertJsonObjectToUserModel(userObject);
-                System.out.println(Main.userModel.cart.size());
-                System.out.println(Main.userModel.name);
                 return true;
             }
         }
@@ -155,7 +149,6 @@ public class JsonHelper {
 
         JsonArray cartArray = userObject.getJsonArray("cart");
         for (JsonValue cartItem : cartArray) {
-            System.out.println(cartItem);
             CartItemModel itemModel = convertJsonToCartItemModel(cartItem);
             cart.add(itemModel);
         }
@@ -177,7 +170,6 @@ public class JsonHelper {
 
     public void updateUser(UserModel userModel) {
         try {
-            System.out.println("updating user");
             JsonArray existingUsers = readJsonArrayFromFile("src/main/java/com/gazi/acsepeti/data/users.json");
 
             JsonArrayBuilder builder = Json.createArrayBuilder();
@@ -187,7 +179,6 @@ public class JsonHelper {
                     JsonObject userObject = (JsonObject) value;
                     String existingUserName = userObject.getString("name");
 
-                    System.out.println("o anki kişi " + Main.userModel.name);
                     if (existingUserName.equals(Main.userModel.name)) {
                         JsonObject updatedUser = createJsonObject(userModel);
                         builder.add(updatedUser);

@@ -1,28 +1,35 @@
 package com.gazi.acsepeti.components.profile;
 
-import com.gazi.acsepeti.JsonHelper;
 import com.gazi.acsepeti.Main;
 import com.gazi.acsepeti.interfaces.IGeneralComponentsFunctions;
+import com.gazi.acsepeti.interfaces.IRestaurantFunctions;
 import com.gazi.acsepeti.interfaces.ISignFunctions;
-import com.gazi.acsepeti.models.CartItemModel;
 import com.gazi.acsepeti.models.UserModel;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
+/**@see SignUp sınıfı
+ * @see VBox sınıfından kalıttık çünkü eklediğimiz componentlar otomatik bir şekilde alt alta diziliyor
+ * @see IGeneralComponentsFunctions interface inden implement ettik
+ * @see IRestaurantFunctions interface inden implement ettik
+ */
 public class SignUp extends VBox implements IGeneralComponentsFunctions, ISignFunctions {
     private UserModel userModel;
-
+    /**
+     * @param userModel giriş yapan kullanıcının bilgilerini içinde barındıran sınıf
+     */
     public SignUp() {
         userModel = new UserModel(0, "", "", "", "", "", "");
         createTitle();
         createTextField();
-        createSignInButton();
+        createButton();
         switchSign();
         setThis();
     }
 
+    // Kendini ayarlama
     @Override
     public void setThis() {
         getStyleClass().add("food");
@@ -32,6 +39,7 @@ public class SignUp extends VBox implements IGeneralComponentsFunctions, ISignFu
         setAlignment(Pos.CENTER);
     }
 
+    // Sayfanın başlığının oluşturulması
     @Override
     public void createTitle() {
         Label title = new Label("Oturum Aç");
@@ -40,6 +48,7 @@ public class SignUp extends VBox implements IGeneralComponentsFunctions, ISignFu
         getChildren().add(title);
     }
 
+    // Sayfadaki textfieldların oluşturulması
     @Override
     public void createTextField() {
         String[] prompTexts = new String[]{
@@ -65,8 +74,9 @@ public class SignUp extends VBox implements IGeneralComponentsFunctions, ISignFu
         getChildren().add(passwordField);
     }
 
+    // Sayfadaki butonun oluşturulması
     @Override
-    public void createSignInButton() {
+    public void createButton() {
         Button button = new Button("Kaydol");
         button.setId("shoppingBtn");
         button.setMaxWidth(200);
@@ -96,6 +106,7 @@ public class SignUp extends VBox implements IGeneralComponentsFunctions, ISignFu
         getChildren().add(button);
     }
 
+    // Oturum açma ve hesap oluşturma sayfaları arasında geçiş için bir fonksiyon
     @Override
     public void switchSign() {
         Hyperlink link = new Hyperlink("Oturum Aç");

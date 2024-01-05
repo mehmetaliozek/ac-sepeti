@@ -1,6 +1,7 @@
 package com.gazi.acsepeti.components.restaurant;
 
 import com.gazi.acsepeti.Main;
+import com.gazi.acsepeti.components.AppBar;
 import com.gazi.acsepeti.components.Body;
 import com.gazi.acsepeti.interfaces.IGeneralComponentsFunctions;
 import com.gazi.acsepeti.interfaces.IRestaurantFunctions;
@@ -22,27 +23,36 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 
+/**@see Restaurant sınıfı
+ * @see VBox sınıfından kalıttık çünkü eklediğimiz componentlar otomatik bir şekilde alt alta diziliyor
+ * @see IGeneralComponentsFunctions interface inden implement ettik
+ * @see IRestaurantFunctions interface inden implement ettik
+ */
 public class Restaurant extends VBox implements IGeneralComponentsFunctions, IRestaurantFunctions {
     private RestaurantModel model;
     private final EventHandler<MouseEvent> mouseEventHandler;
 
+    /**
+     * @param model restoranın bilgilerini içinde barındıra sınıf
+     * @param mouseEventHandler restorana tıklandığında yaşanacak olay
+     */
     public Restaurant(RestaurantModel model) {
         this.model = model;
+        // Tıklanma yaşandığında restoranın içindeki yemekleri listeliyip sayfanın değişmesinine yarıyor
         this.mouseEventHandler = e -> {
-            // TODO: Yemek listesine geçiş sağla aşağıda örnek sistem var
             ArrayList foods = new ArrayList<Food>();
             for (int i = 0; i < model.foods.size(); i++) {
                 foods.add(new Food(model.foods.get(i)));
             }
             Body body = new Body(foods, 2);
-            Main.vBox.getChildren().remove(Main.vBox.getChildren().size() - 1);
-            Main.vBox.getChildren().add(body);
+            Main.setBody(body);
         };
         setImage();
         setAction();
         setThis();
     }
 
+    // Kendini ayarlama
     @Override
     public void setThis() {
         getStyleClass().add("restaurant");
@@ -56,6 +66,7 @@ public class Restaurant extends VBox implements IGeneralComponentsFunctions, IRe
         setOnMouseClicked(mouseEventHandler);
     }
 
+    // İçeriğindeki resmin ayarlanması
     @Override
     public void setImage() {
         // Resmi internetten çekiyoz
@@ -82,25 +93,31 @@ public class Restaurant extends VBox implements IGeneralComponentsFunctions, IRe
 
     @Override
     public void setAction() {
+        /**@param pane bu bileşen içinde restoran adını ve ileri butonunu tutacak*/
         StackPane pane = new StackPane();
         pane.setPadding(new Insets(15, 10, 0, 10));
 
+        /**@param lbl restoran adını gösterdiğimiz bileşen*/
         Label lbl = new Label(model.name);
         lbl.setId("appBarTitle");
 
+        /**@param icon butonun üzerinde gözükecek */
         FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon.ARROW_RIGHT);
         icon.setSize("25");
         icon.getStyleClass().add("icon");
 
+        /**@param button tıklandığında yemek listesine geçilcek */
         Button button = new Button();
         button.setGraphic(icon);
         button.getStyleClass().add("restaurant-btn");
         button.setOnMouseClicked(mouseEventHandler);
 
+        // StackPane'e bileşenleri ekleme ve konumlarını ayarlama
         pane.getChildren().addAll(lbl, button);
         StackPane.setAlignment(lbl, Pos.CENTER_LEFT);
         StackPane.setAlignment(button, Pos.CENTER_RIGHT);
 
+        // StackPane'i Restaurant bileşenimize ekleme
         getChildren().add(pane);
     }
 }

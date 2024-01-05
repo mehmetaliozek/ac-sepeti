@@ -1,12 +1,18 @@
 package com.gazi.acsepeti.components.profile;
 
 import com.gazi.acsepeti.Main;
+import com.gazi.acsepeti.components.Body;
 import com.gazi.acsepeti.interfaces.IGeneralComponentsFunctions;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.StackPane;
 
+/**@see Sign sýnýfýný
+ * @see ScrollPane sýnýfýndan kalýttýk çünkü ScrollPane sýnýfý içine componentlar eklendiðinde
+ * ve ekranda taþma meydana gelince otomatik olarak scrollbar ekliyor
+ * @see IGeneralComponentsFunctions interface inden implement ettik
+ * */
 public class Sign extends ScrollPane implements IGeneralComponentsFunctions {
     private StackPane pane;
 
@@ -30,6 +36,7 @@ public class Sign extends ScrollPane implements IGeneralComponentsFunctions {
         setThis();
     }
 
+    // Kendini ayarlama
     @Override
     public void setThis() {
         setContent(pane);

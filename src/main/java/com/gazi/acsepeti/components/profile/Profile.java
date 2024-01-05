@@ -1,10 +1,10 @@
 package com.gazi.acsepeti.components.profile;
 
-import com.gazi.acsepeti.JsonHelper;
 import com.gazi.acsepeti.Main;
+import com.gazi.acsepeti.components.restaurant.Restaurant;
 import com.gazi.acsepeti.interfaces.IGeneralComponentsFunctions;
+import com.gazi.acsepeti.interfaces.IRestaurantFunctions;
 import com.gazi.acsepeti.interfaces.ISignFunctions;
-import com.gazi.acsepeti.models.CartItemModel;
 import com.gazi.acsepeti.models.UserModel;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,23 +14,27 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
-import javax.json.*;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-
+/**@see Profile sınıfı
+ * @see VBox sınıfından kalıttık çünkü eklediğimiz componentlar otomatik bir şekilde alt alta diziliyor
+ * @see IGeneralComponentsFunctions interface inden implement ettik
+ * @see IRestaurantFunctions interface inden implement ettik
+ */
 public class Profile extends VBox implements IGeneralComponentsFunctions, ISignFunctions {
     private UserModel userModel;
 
+    /**
+     * @param userModel giriş yapan kullanıcının bilgilerini içinde barındıran sınıf
+     */
     public Profile() {
         userModel = new UserModel(0, "", "", "", "", "", "");
         createTitle();
         createTextField();
-        createSignInButton();
+        createButton();
         switchSign();
         setThis();
     }
 
+    // Kendini ayarlama
     @Override
     public void setThis() {
         getStyleClass().add("food");
@@ -40,6 +44,7 @@ public class Profile extends VBox implements IGeneralComponentsFunctions, ISignF
         setAlignment(Pos.CENTER);
     }
 
+    // Sayfanın başlığının oluşturulması
     @Override
     public void createTitle() {
         Label title = new Label("Hesabım");
@@ -48,6 +53,7 @@ public class Profile extends VBox implements IGeneralComponentsFunctions, ISignF
         getChildren().add(title);
     }
 
+    // Sayfadaki textfieldların oluşturulması
     @Override
     public void createTextField() {
         String[] prompTexts = new String[]{
@@ -77,7 +83,6 @@ public class Profile extends VBox implements IGeneralComponentsFunctions, ISignF
             textField.setMaxWidth(400);
             textField.setPrefHeight(50);
             textField.setMaxHeight(200);
-            System.out.println(currentUserInfo[i]);
             if (currentUserInfo[i] == " ") {
                 textField.setText(prompTexts[i]);
             } else {
@@ -87,8 +92,9 @@ public class Profile extends VBox implements IGeneralComponentsFunctions, ISignF
         }
     }
 
+    // Sayfadaki butonun oluşturulması
     @Override
-    public void createSignInButton() {
+    public void createButton() {
         Button button = new Button("Kaydet");
         button.setId("shoppingBtn");
         button.setMaxWidth(200);
@@ -125,6 +131,7 @@ public class Profile extends VBox implements IGeneralComponentsFunctions, ISignF
         getChildren().add(button);
     }
 
+    // İmplement edilmiş bir fonksiyon olup kullanılmadı
     @Override
     public void switchSign() {
 
