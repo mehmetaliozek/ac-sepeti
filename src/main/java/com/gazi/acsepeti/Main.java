@@ -20,9 +20,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-//TODO: Sepetten ürün silinmeden önce uyarı ver
 //TODO: Kullanıcı oturum açtığında ana sayfaya atsın
-//TODO: Restaurant, Food, SignUp, SignIn, Sign, Profile, CartItem, Cart açıklama satırları ekle
 
 public class Main extends Application {
     // Json okuma yazma işlemleri için geliştirilmiş sınıf
@@ -33,6 +31,8 @@ public class Main extends Application {
     public static UserModel userModel;
     // JavaFX in bize sağlamış olduğu bir sınıftır bu sınıf içine eklenen componentları alt alta dizilmesini sağlar
     public static VBox vBox;
+    // Ana sayfanın gövdesi
+    private static Body body;
     // Ana sayfada gösterilen restoranların yan yana en fazla kaç tane gelebilceğini ifade eder
     private final int maxHorizontalRestaurantCount = 3;
     // Herhangi bir restorana girildiği vakit o restoranın ana sayfasında yan yana en fazla kaç yemeğin çıkacağını temsil eder
@@ -86,6 +86,10 @@ public class Main extends Application {
         setBody(profile);
     }
 
+    public static void getHome() {
+        setBody(body);
+    }
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         ArrayList restaurants = new ArrayList<Restaurant>();
@@ -93,7 +97,7 @@ public class Main extends Application {
         helper.readDataFromRestaurants(restaurants);
 
         // Uygulamanın sayfalarının oluşturulması nesnesinin oluşturulması
-        Body body = new Body(restaurants, maxHorizontalRestaurantCount);
+        body = new Body(restaurants, maxHorizontalRestaurantCount);
 
         // AppBar nesnesinin oluşturulması
         AppBar appBar = new AppBar("Aç Sepeti", mouseEvent -> {

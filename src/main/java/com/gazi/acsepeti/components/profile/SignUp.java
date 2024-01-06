@@ -114,7 +114,7 @@ public class SignUp extends VBox implements IGeneralComponentsFunctions, ISignFu
         link.setPadding(new Insets(25, 0, 0, 0));
         link.setOnMouseClicked(event -> {
             Main.sign = !Main.sign;
-            Main.getProfile();
+            Main.getHome();
         });
         getChildren().add(link);
     }

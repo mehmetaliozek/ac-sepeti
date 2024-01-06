@@ -105,7 +105,7 @@ public class SignIn extends VBox implements IGeneralComponentsFunctions, ISignFu
             }
 
             if (userExists) {
-                Main.getProfile();
+                Main.getHome();
             } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("EMAİ VEYA ŞİFRE YANLIŞ");
@@ -124,7 +124,7 @@ public class SignIn extends VBox implements IGeneralComponentsFunctions, ISignFu
         link.setPadding(new Insets(25, 0, 0, 0));
         link.setOnMouseClicked(event -> {
             Main.sign = !Main.sign;
-            Main.getProfile();
+            Main.getHome();
         });
         getChildren().add(link);
     }

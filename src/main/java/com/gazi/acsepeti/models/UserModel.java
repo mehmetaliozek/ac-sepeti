@@ -1,15 +1,19 @@
 package com.gazi.acsepeti.models;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
 import java.util.ArrayList;
+import java.util.Optional;
 
 /**
- * @param id kullanıcı idsinin tutuldu değişken
- * @param name kullanıcı adının tutuldu değişken
- * @param mail kullanıcı mailinin tutuldu değişken
+ * @param id       kullanıcı idsinin tutuldu değişken
+ * @param name     kullanıcı adının tutuldu değişken
+ * @param mail     kullanıcı mailinin tutuldu değişken
  * @param password kullanıcı şifresinin tutuldu değişken
- * @param adress kullanıcı adresinin tutuldu değişken
- * @param tel kullanıcı telefon numarasının tutuldu değişken
- * @param cart kullanıcı sepetindeki ürünlerin tutuldu değişken
+ * @param adress   kullanıcı adresinin tutuldu değişken
+ * @param tel      kullanıcı telefon numarasının tutuldu değişken
+ * @param cart     kullanıcı sepetindeki ürünlerin tutuldu değişken
  */
 public class UserModel {
     public int id;
@@ -33,7 +37,7 @@ public class UserModel {
         this.cart = new ArrayList<CartItemModel>();
     }
 
-    public UserModel(int id, String name, String surname, String mail, String password, String address, String tel,ArrayList<CartItemModel> cart) {
+    public UserModel(int id, String name, String surname, String mail, String password, String address, String tel, ArrayList<CartItemModel> cart) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -67,7 +71,15 @@ public class UserModel {
                 cart.get(i).count += amount;
                 //Negatif artış ile ürünün miktarı sıfır olursa sepetten siliyor
                 if (cart.get(i).count == 0) {
-                    cart.remove(i);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "", ButtonType.OK, ButtonType.NO);
+                    alert.setContentText("Ürünü sepetten silmek istediğinize eminmisiniz");
+                    Optional<ButtonType> result = alert.showAndWait();
+
+                    if (result.get() == ButtonType.OK) {
+                        cart.remove(i);
+                    } else {
+                        cart.get(i).count = 1;
+                    }
                 }
                 return true;
             }
