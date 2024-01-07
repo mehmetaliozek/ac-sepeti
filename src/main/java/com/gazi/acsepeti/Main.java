@@ -20,8 +20,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-//TODO: Kullanıcı oturum açtığında ana sayfaya atsın
-
 public class Main extends Application {
     // Json okuma yazma işlemleri için geliştirilmiş sınıf
     public static JsonHelper helper = new JsonHelper();
